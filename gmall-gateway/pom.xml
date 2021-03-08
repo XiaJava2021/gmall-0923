@@ -11,6 +11,7 @@
     <artifactId>gmall-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gmall-gateway</name>
+
     <description>谷粒商城网关系统</description>
     <dependencies>
         <dependency>
