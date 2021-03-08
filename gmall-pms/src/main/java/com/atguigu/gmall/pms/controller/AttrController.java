@@ -22,9 +22,9 @@ import com.atguigu.gmall.common.bean.PageParamVo;
 /**
  * 商品属性
  *
- * @author fengge
- * @email fengge@atguigu.com
- * @date 2021-03-08 14:58:56
+ * @author xiatian
+ * @email xiatian@atguigu.com
+ * @date 2021-03-08 19:48:28
  */
 @Api(tags = "商品属性 管理")
 @RestController

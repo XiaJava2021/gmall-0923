@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,9 +13,9 @@
         <module name="gmall-oms" />
         <module name="gmall-gateway" />
         <module name="gmall-generator" />
-        <module name="gmall-common" />
-        <module name="gmall-pms" />
         <module name="gmall-admin" />
+        <module name="gmall-pms" />
+        <module name="gmall-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">

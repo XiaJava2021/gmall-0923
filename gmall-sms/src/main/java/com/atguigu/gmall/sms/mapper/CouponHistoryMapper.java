@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 优惠券领取历史记录
  * 
- * @author fengge
- * @email fengge@atguigu.com
- * @date 2021-03-08 15:42:12
+ * @author xiatian
+ * @email xiatian@atguigu.com
+ * @date 2021-03-08 19:47:21
  */
 @Mapper
 public interface CouponHistoryMapper extends BaseMapper<CouponHistoryEntity> {

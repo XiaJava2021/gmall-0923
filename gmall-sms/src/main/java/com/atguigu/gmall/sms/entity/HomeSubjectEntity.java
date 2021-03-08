@@ -10,9 +10,9 @@ import lombok.Data;
 /**
  * 首页专题表【jd首页下面很多专题，每个专题链接新的页面，展示专题商品信息】
  * 
- * @author fengge
- * @email fengge@atguigu.com
- * @date 2021-03-08 15:42:12
+ * @author xiatian
+ * @email xiatian@atguigu.com
+ * @date 2021-03-08 19:47:21
  */
 @Data
 @TableName("sms_home_subject")

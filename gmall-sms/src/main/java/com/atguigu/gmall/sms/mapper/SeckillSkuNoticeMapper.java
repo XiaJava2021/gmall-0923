@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 秒杀商品通知订阅
  * 
- * @author fengge
- * @email fengge@atguigu.com
- * @date 2021-03-08 15:42:11
+ * @author xiatian
+ * @email xiatian@atguigu.com
+ * @date 2021-03-08 19:47:21
  */
 @Mapper
 public interface SeckillSkuNoticeMapper extends BaseMapper<SeckillSkuNoticeEntity> {
