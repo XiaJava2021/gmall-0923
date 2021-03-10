@@ -38,8 +38,23 @@ public class AttrController {
     /**
      * 查询分类下的规格参数
      */
-    @GetMapping("group/{gid}")
+    @GetMapping("category/{cid}")
     @ApiOperation("查询分类下的规格参数")
+    public ResponseVo<List<AttrEntity>> queryAttrByCidOrTypeOrSearchType(
+            @PathVariable("cid")Long cid,
+            @RequestParam(value = "type",required = false)Integer type,
+            @RequestParam(value = "searchType",required = false)Integer searchType
+    ){
+        List<AttrEntity> attrEntities =  this.attrService.queryAttrByCidOrTypeOrSearchType(cid,type,searchType);
+        return ResponseVo.ok(attrEntities);
+    }
+
+
+    /**
+     * 查询分类下的分类规格参数集合
+     */
+    @GetMapping("group/{gid}")
+    @ApiOperation("查询分类下的分类规格参数集合")
     public ResponseVo<List<AttrEntity>> queryAttrByGid(@PathVariable("gid")Long gid){
         List<AttrEntity> attrEntities =  this.attrService.list(new QueryWrapper<AttrEntity>().eq("group_id",gid));
 
