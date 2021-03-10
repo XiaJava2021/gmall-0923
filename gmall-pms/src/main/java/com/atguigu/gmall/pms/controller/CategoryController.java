@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +34,17 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    /**
+     * 分级查询
+     */
+    @GetMapping("parent/{parentId}")
+    @ApiOperation("分级查询")
+    public ResponseVo<List<CategoryEntity>> queryCategoriesByPid(@PathVariable("parentId") Long pid){
+        List<CategoryEntity> categoryEntities = this.categoryService.queryCategoriesByPid(pid);
+
+        return ResponseVo.ok(categoryEntities);
+    }
 
     /**
      * 列表

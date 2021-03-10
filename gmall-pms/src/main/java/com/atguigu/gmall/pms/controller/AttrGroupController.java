@@ -2,8 +2,11 @@ package com.atguigu.gmall.pms.controller;
 
 import java.util.List;
 
+import com.atguigu.gmall.pms.entity.AttrEntity;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,6 +36,27 @@ public class AttrGroupController {
 
     @Autowired
     private AttrGroupService attrGroupService;
+
+    /**
+     *  查询分类下的组及规格参数
+     */
+    @GetMapping("withattrs/{catId}")
+    @ApiOperation("查询分类下的组及规格参数")
+    public ResponseVo<List<AttrGroupEntity>> queryGroupsWithAttrsByCid(@PathVariable("catId")Long cid){
+        List<AttrGroupEntity> groups = this.attrGroupService.queryGroupsWithAttrsByCid(cid);
+        return ResponseVo.ok(groups);
+    }
+
+    /**
+     * 查询三级分类的分组
+     */
+    @GetMapping("category/{cid}")
+    @ApiOperation("查询三级分类的分组")
+    public ResponseVo<List<AttrGroupEntity>> queryAttrGroupByCid(@PathVariable("cid")Long cid){
+        List<AttrGroupEntity> groupEntities = this.attrGroupService.list(new QueryWrapper<AttrGroupEntity>().eq("category_id",cid));
+        return ResponseVo.ok(groupEntities);
+    }
+
 
     /**
      * 列表
