@@ -21,6 +21,8 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.ResponseVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
+import javax.swing.*;
+
 /**
  * spu信息
  *
@@ -103,3 +105,5 @@ public class SpuController {
     }
 
 }
+
+

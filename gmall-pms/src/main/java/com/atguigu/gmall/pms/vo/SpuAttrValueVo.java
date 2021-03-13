@@ -16,6 +16,9 @@ public class SpuAttrValueVo extends SpuAttrValueEntity {
             return;
         }
 
+        // 将 spu属性信息 包装成数组存储
         this.setAttrValue(StringUtils.join(valueSelected,","));
+        // 当属性信息是唯一值时,选用索引第一位方法
+//        this.setAttrValue(valueSelected.get(0));
     }
 }
