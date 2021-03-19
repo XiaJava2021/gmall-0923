@@ -1,6 +1,5 @@
 package com.atguigu.gmall.pms.controller;
 
-import java.util.List;
 
 import com.atguigu.gmall.pms.vo.SkuVo;
 import com.atguigu.gmall.pms.vo.SpuVo;
@@ -21,7 +20,8 @@ import com.atguigu.gmall.common.bean.PageResultVo;
 import com.atguigu.gmall.common.bean.ResponseVo;
 import com.atguigu.gmall.common.bean.PageParamVo;
 
-import javax.swing.*;
+import java.util.List;
+
 
 /**
  * spu信息
@@ -46,6 +46,17 @@ public class SpuController {
     public ResponseVo<PageResultVo> querySpuByCidOrKeyPage(PageParamVo paramVo,@PathVariable("categoryId")Long cid){
         PageResultVo resultVo = this.spuService.querySpuByCidOrKeyPage(paramVo,cid);
         return ResponseVo.ok(resultVo);
+    }
+
+    /**
+     * search 远程调用
+     */
+    @PostMapping("json")
+    @ApiOperation("分页查询,feign 专用")
+    public ResponseVo<List<SpuEntity>> querySpuPage(@RequestBody PageParamVo paramVo){
+        PageResultVo pageResultVo = spuService.queryPage(paramVo);
+        System.out.println(pageResultVo.getList().getClass());
+        return ResponseVo.ok((List<SpuEntity>) pageResultVo.getList());
     }
 
     /**
