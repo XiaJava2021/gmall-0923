@@ -1,7 +1,9 @@
 package com.atguigu.gmall.pms.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -17,6 +19,9 @@ import com.atguigu.gmall.pms.service.CategoryService;
 
 @Service("categoryService")
 public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEntity> implements CategoryService {
+
+    @Autowired
+    private CategoryMapper categoryMapper;
 
     @Override
     public PageResultVo queryPage(PageParamVo paramVo) {
@@ -35,6 +40,25 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, CategoryEnt
             wrapper.eq("parent_id",pid);
         }
         return this.list(wrapper);
+    }
+
+    @Override
+    public List<CategoryEntity> queryLvl2CatesWithSubsByPid(Long pid) {
+        return this.categoryMapper.queryLvl2CatesWithSubsByPid(pid);
+    }
+
+    @Override
+    public List<CategoryEntity> queryLvlAllCategoriesByCid3(Long cid) {
+        CategoryEntity categoryEntity3 = this.getById(cid);
+
+        if (categoryEntity3 == null) {
+            return null;
+        }
+
+        CategoryEntity categoryEntity2 = this.getById(categoryEntity3.getId());
+        CategoryEntity categoryEntity1 = this.getById(categoryEntity2.getId());
+
+        return Arrays.asList(categoryEntity1,categoryEntity2,categoryEntity3);
     }
 
 }

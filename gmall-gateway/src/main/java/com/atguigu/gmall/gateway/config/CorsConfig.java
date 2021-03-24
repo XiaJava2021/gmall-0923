@@ -25,6 +25,8 @@ public class CorsConfig {
         config.addAllowedOrigin("http://localhost:1000");
         config.addAllowedOrigin("http://127.0.0.1:1000");
         config.addAllowedOrigin("http://192.168.255.1:1000");
+        config.addAllowedOrigin("http://www.gmall.com");
+        config.addAllowedOrigin("http://gmall.com");
         // 允许所有请求方式跨域访问
         config.addAllowedMethod("*");
         // 允许携带 cookie
