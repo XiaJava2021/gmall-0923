@@ -11,6 +11,6 @@ import lombok.Data;
 public class AttrValueVo {
 
     private Long attrId;
-    private String name;
-    private String attrValues;
+    private String attrName;
+    private String attrValue;
 }

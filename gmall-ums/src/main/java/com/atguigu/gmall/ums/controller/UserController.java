@@ -35,11 +35,45 @@ public class UserController {
     private UserService userService;
 
     /**
+     *  TODO: 发送短信验证码 搭建短信微服务
+     *  POST /ums/user/code
+     */
+
+    // 查询功能，根据参数中的登录名（用户名/手机号/邮箱）和密码查询指定用户
+    @GetMapping("query")
+    public ResponseVo<UserEntity> queryUser(
+            @RequestParam("loginName")String loginName,
+            @RequestParam("password")String password
+    ){
+        UserEntity userEntity =  this.userService.queryUser(loginName,password);
+        return ResponseVo.ok(userEntity);
+    }
+
+    // 实现用户注册功能，需要对用户密码进行加密存储，使用MD5加密，加密过程中使用随机码作为salt加盐
+    @PostMapping("register")
+    public ResponseVo register(UserEntity userEntity,@RequestParam("code")String code){
+        this.userService.register(userEntity,code);
+        return ResponseVo.ok();
+    }
+
+
+    // 实现用户数据的校验
+    @GetMapping("check/{data}/{type}")
+    public ResponseVo<Boolean> checkData(
+            @PathVariable("data") String data,
+            @PathVariable("type") Integer type
+    ) {
+        Boolean flag = this.userService.checkData(data,type);
+        return ResponseVo.ok(flag);
+    }
+
+
+    /**
      * 列表
      */
     @GetMapping
     @ApiOperation("分页查询")
-    public ResponseVo<PageResultVo> queryUserByPage(PageParamVo paramVo){
+    public ResponseVo<PageResultVo> queryUserByPage(PageParamVo paramVo) {
         PageResultVo pageResultVo = userService.queryPage(paramVo);
 
         return ResponseVo.ok(pageResultVo);
@@ -51,8 +85,8 @@ public class UserController {
      */
     @GetMapping("{id}")
     @ApiOperation("详情查询")
-    public ResponseVo<UserEntity> queryUserById(@PathVariable("id") Long id){
-		UserEntity user = userService.getById(id);
+    public ResponseVo<UserEntity> queryUserById(@PathVariable("id") Long id) {
+        UserEntity user = userService.getById(id);
 
         return ResponseVo.ok(user);
     }
@@ -62,8 +96,8 @@ public class UserController {
      */
     @PostMapping
     @ApiOperation("保存")
-    public ResponseVo<Object> save(@RequestBody UserEntity user){
-		userService.save(user);
+    public ResponseVo<Object> save(@RequestBody UserEntity user) {
+        userService.save(user);
 
         return ResponseVo.ok();
     }
@@ -73,8 +107,8 @@ public class UserController {
      */
     @PostMapping("/update")
     @ApiOperation("修改")
-    public ResponseVo update(@RequestBody UserEntity user){
-		userService.updateById(user);
+    public ResponseVo update(@RequestBody UserEntity user) {
+        userService.updateById(user);
 
         return ResponseVo.ok();
     }
@@ -84,8 +118,8 @@ public class UserController {
      */
     @PostMapping("/delete")
     @ApiOperation("删除")
-    public ResponseVo delete(@RequestBody List<Long> ids){
-		userService.removeByIds(ids);
+    public ResponseVo delete(@RequestBody List<Long> ids) {
+        userService.removeByIds(ids);
 
         return ResponseVo.ok();
     }

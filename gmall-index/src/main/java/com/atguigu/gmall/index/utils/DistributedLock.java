@@ -33,7 +33,7 @@ public class DistributedLock {
                 e.printStackTrace();
             }
         }
-        this.renewExpire(lockName,uuid,expire);
+        this.renewExpire(lockName, uuid, expire);
         return true;
     }
 
@@ -43,7 +43,7 @@ public class DistributedLock {
         Long flag = this.redisTemplate.execute(new DefaultRedisScript<>(script, Long.class), Arrays.asList(lockName, uuid));
         if (flag == null) {
             throw new RuntimeException("要解的锁不存在,或者不属于你");
-        } else if(flag == 1){
+        } else if (flag == 1) {
             timer.cancel();
         }
 

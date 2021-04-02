@@ -25,15 +25,15 @@ public interface GmallPmsApi {
     @GetMapping("pms/sku/spu/{spuId}")
     ResponseVo<List<SkuEntity>> querySkuBySpuId(@PathVariable("spuId")Long spuId);
 
-    // 根据skuId查询sku
+    // 根据 skuId 查询 sku
     @GetMapping("pms/sku/{id}")
     public ResponseVo<SkuEntity> querySkuById(@PathVariable("id") Long id);
 
-    // 根据spuId查询spu
+    // 根据 spuId 查询 spu
     @GetMapping("pms/spu/{id}")
     public ResponseVo<SpuEntity> querySpuById(@PathVariable("id") Long id);
 
-    // 根据品牌id查询品牌
+    // 根据品牌 id 查询品牌
     @GetMapping("pms/brand/{id}")
     ResponseVo<BrandEntity> queryBrandById(@PathVariable("id") Long id);
 
@@ -66,7 +66,7 @@ public interface GmallPmsApi {
     @GetMapping("pms/spudesc/{spuId}")
     public ResponseVo<SpuDescEntity> querySpuDescById(@PathVariable("spuId") Long spuId);
 
-    // 根据spuId查询所有Sku的销售属性
+    // 根据 spuId 查询所有 Sku 的销售属性
     @GetMapping("pms/skuattrvalue/spu/{spuId}")
     public ResponseVo<List<SaleAttrValueVo>> querySaleAttrsBySpuId(@PathVariable("spuId")Long spuId);
 

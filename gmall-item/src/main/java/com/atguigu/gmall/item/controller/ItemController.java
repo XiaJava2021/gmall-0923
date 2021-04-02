@@ -5,6 +5,7 @@ import com.atguigu.gmall.item.service.ItemService;
 import com.atguigu.gmall.item.vo.ItemVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,10 +21,12 @@ public class ItemController {
     private ItemService itemService;
 
     @GetMapping("{skuId}.html")
-    @ResponseBody
-    public ResponseVo<ItemVo> loadData(@PathVariable("skuId")Long skuId) throws Exception {
+    public String loadData(@PathVariable("skuId")Long skuId, Model model) throws Exception {
+        System.out.println("================");
         ItemVo itemVo = this.itemService.loadData(skuId);
-        return ResponseVo.ok(itemVo);
+        model.addAttribute("itemVo",itemVo);
+        this.itemService.createHtml(itemVo);
+        return "item";
     }
 
 }

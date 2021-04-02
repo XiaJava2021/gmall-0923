@@ -27,3 +27,8 @@ feign:
 ribbon:
   ReadTimeout: 30000
   ConnectTimeout: 30000
+threadPool:
+  coreSize: 100
+  maxSize: 500
+  keepAliveTime: 60
+  blockQueueSize: 5000

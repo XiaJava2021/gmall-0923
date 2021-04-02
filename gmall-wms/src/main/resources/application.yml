@@ -9,4 +9,17 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
-
+spring:
+  rabbitmq:
+    host: 192.168.255.131
+    virtual-host: /testMq
+    username: xia
+    password: xia
+    listener:
+      simple:
+        prefetch: 1
+        acknowledge-mode: manual
+        concurrency: 4
+    port: 5672
+    publisher-confirm-type: correlated
+    publisher-returns: true

@@ -53,7 +53,7 @@ public class ItemVo {
     private List<SaleAttrValueVo> saleAttrs;
 
     // 当前商品的销售属性 JSON 格式: {3: '黑色',4: '8G',5: '512G'}
-    private String saleAttr;
+    private Map<Long,String> saleAttr;
 
     // 销售属性组合和 skuId 的映射关系: ['黑色,8G,128G': 10, '黑色,12G,256G': 11]
     private Map<String,Object> skuJsons;

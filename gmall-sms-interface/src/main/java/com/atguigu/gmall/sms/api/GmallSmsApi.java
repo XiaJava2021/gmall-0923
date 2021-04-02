@@ -20,7 +20,7 @@ public interface GmallSmsApi {
     @PostMapping("sms/skubounds/sales/save")
     public ResponseVo saveSales(@RequestBody SkuSaleVo saleVo);
 
-    // 根据skuId查询营销信息（sms）
+    // 根据 skuId 查询营销信息（sms）
     @GetMapping("sms/skubounds/sales/{skuId}")
     public ResponseVo<List<ItemSaleVo>> querySalesBySkuId(@PathVariable("skuId")Long skuId);
 }
